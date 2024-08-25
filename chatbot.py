@@ -66,9 +66,6 @@ The Current Product List is limited as below:
 Make the shopping experience enjoyable and encourage customers to reach out if they have any questions or need assistance.
 """}]
 
-with st.sidebar:
-    openai_api_key = st.text_input('OpenAI API Key', key='chatbot_api_key', type='password')
-
 st.title('Trendy Fashion 챗봇')
 st.caption('AI 쇼핑 어시스턴트입니다.')
 
@@ -82,10 +79,6 @@ for msg in st.session_state.messages:
 
 # 사용자 입력 처리 및 GPT 응답 생성
 if prompt := st.chat_input():
-    if not openai_api_key.startswith('sk-'):
-        st.warning('OpenAI API Key를 입력하세요!', icon='⚠')
-        st.stop()
-
     # 사용자 입력을 대화 기록에 추가
     st.session_state['messages'].append({'role': 'user', 'content': prompt})
     st.chat_message('user').write(prompt)
