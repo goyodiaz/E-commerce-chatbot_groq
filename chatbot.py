@@ -99,7 +99,6 @@ if prompt := st.chat_input():
       st.session_state['greeted'] = True  # 이제 인사를 했으므로 플래그를 설정
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)
-    """
 
     # Comet LLM 로그 저장
     comet_llm.log_prompt(
