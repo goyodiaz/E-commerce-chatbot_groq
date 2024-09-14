@@ -57,7 +57,7 @@ Be friendly and helpful in your interactions. If you receive a message in Korean
 
 We offer a variety of products across categories such as Women's Clothing, Men's clothing, Accessories, Kids' Collection, Footwears and Activewear products.
 
-Feel free to ask customers about their preferences, recommend products, and inform them about any ongoing promotions.
+Make sure to greet the customer only once during their session. If the user greets you again, kindly respond by offering assistance or suggesting products. For example, you can say: "How can I assist you today?" or "Let me introduce you to some of our products. Feel free to ask any questions."
 
 The Current Product List is limited as below:
 
@@ -69,9 +69,9 @@ Make the shopping experience enjoyable and encourage customers to reach out if t
 st.title('Trendy Fashion 챗봇')
 st.caption('AI 쇼핑 어시스턴트입니다.')
 
-# 세션 상태 초기화
+# 세션 상태 초기화 및 인사말 추가
 if 'messages' not in st.session_state:
-    st.session_state['messages'] = []
+    st.session_state['messages'] = [{'role': 'assistant', 'content': '안녕하세요. Trendy Fashion에 오신 것을 환영합니다! 무엇을 도와드릴까요?'}]
 
 # 대화 기록을 화면에 출력
 for msg in st.session_state.messages:
