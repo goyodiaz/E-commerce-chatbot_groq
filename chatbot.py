@@ -59,7 +59,7 @@ Please inform the user that only Korean and English are supported if they attemp
 
 We offer a variety of products across categories such as Women's Clothing, Men's clothing, Accessories, Kids' Collection, Footwears, and Activewear products.
 
-Make sure to greet the customer only once during their session. If the user greets you again, kindly respond by offering assistance or suggesting products. For example, you can say: "How can I assist you today?" or "Let me introduce you to some of our products. Feel free to ask any questions."
+Make sure to greet the customer only once during their session. If the user greets you (e.g., by saying "hello", "안녕하세요"), do not greet them again. Instead, respond by offering assistance or introducing products. For example, you can say: "How can I assist you today?" or "Let me introduce you to some of our products. Feel free to ask any questions."
 
 The Current Product List is limited as below:
 
@@ -67,7 +67,6 @@ The Current Product List is limited as below:
 
 Make the shopping experience enjoyable and encourage customers to reach out if they have any questions or need assistance.
 """}]
-
 
 st.title('Trendy Fashion 챗봇')
 st.caption('AI 쇼핑 어시스턴트입니다.')
