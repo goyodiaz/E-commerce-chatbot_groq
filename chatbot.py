@@ -13,7 +13,7 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY'] # 또는 st.secrets['GROQ_API_KEY'] �
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
 
 # Groq Client 설정
-client = groq.Client(api_key=GROQ_API_KEY)
+client = Groq(api_key=GROQ_API_KEY)
 
 # Comet LLM 초기화
 comet_llm.init(project='E-commerce_Chatbot', api_key=COMET_API_KEY)
