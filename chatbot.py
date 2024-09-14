@@ -68,11 +68,12 @@ Make the shopping experience enjoyable and encourage customers to reach out if t
 """}]
 
 st.title('Trendy Fashion 챗봇')
-st.caption('AI 쇼핑 어시스턴트입니다.')
+st.caption('쇼핑을 도와주는 AI 어시스턴트입니다.')
 
 # 세션 상태 초기화
 if 'messages' not in st.session_state:
-    st.session_state['messages'] = []
+    st.session_state['messages'] = [{'role': 'assistant', 'content': '안녕하세요. Trendy Fashion에 오신 것을 환영합니다.'}]
+    st.session_state['greeted'] = True  # 첫 인사 여부를 저장
 
 # 대화 기록을 화면에 출력
 for msg in st.session_state.messages:
@@ -84,16 +85,21 @@ if prompt := st.chat_input():
     st.session_state['messages'].append({'role': 'user', 'content': prompt})
     st.chat_message('user').write(prompt)
 
-    # GPT 모델을 사용하여 응답 생성 (context를 메시지에 추가하여 사용)
-    response = client.chat.completions.create(
+    if st.session_state['greeted']:
+      # GPT 모델을 사용하여 응답 생성 (context를 메시지에 추가하여 사용)
+      response = client.chat.completions.create(
         model='gemma2-9b-it',
         messages=context + st.session_state['messages']
-    )
-    
-    # 응답 메시지를 대화 기록에 추가
-    msg = response.choices[0].message.content
+      )
+      # 응답 메시지를 대화 기록에 추가
+      msg = response.choices[0].message.content
+    else:
+      # 첫 인사 중인 경우, 인사말을 기억하도록 함
+      msg = '안녕하세요! Trendy Fashion입니다. 무엇을 도와드릴까요?'
+      st.session_state['greeted'] = True  # 이제 인사를 했으므로 플래그를 설정
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)
+    """
 
     # Comet LLM 로그 저장
     comet_llm.log_prompt(
