@@ -1,6 +1,6 @@
 import streamlit as st
 import comet_llm
-import groq
+from groq import Groq
 
 # Comet API 키 설정
 COMET_API_KEY = st.secrets['COMET_API_KEY'] # 또는 st.secrets['COMET_API_KEY'] 대신 직접 입력
