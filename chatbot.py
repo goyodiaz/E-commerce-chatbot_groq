@@ -2,12 +2,12 @@ import streamlit as st
 import comet_llm
 from groq import Groq
 
-# Comet API 키 설정
+# Comet API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
 COMET_API_KEY = st.secrets['COMET_API_KEY'] # 또는 st.secrets['COMET_API_KEY'] 대신 직접 입력
 ## st.secrets 관련 내용은 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management 참조
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
 
-# Groq API 키 설정
+# Groq API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
 GROQ_API_KEY = st.secrets['GROQ_API_KEY'] # 또는 st.secrets['GROQ_API_KEY'] 대신 직접 입력
 ## st.secrets 관련 내용은 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management 참조
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
@@ -15,10 +15,10 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY'] # 또는 st.secrets['GROQ_API_KEY'] �
 # Groq Client 설정
 client = Groq(api_key=GROQ_API_KEY)
 
-# Comet LLM 초기화
+# Comet LLM 초기화 및 프로젝트 이름을 설정
 comet_llm.init(project='E-commerce_Chatbot', api_key=COMET_API_KEY)
 
-# Product List 및 Context 설정
+# 제품 목록을 정의한다. 이 목록은 챗봇의 컨텍스트로 사용하며, 사용자가 대화 중에 요청할 수 있는 제품 정보를 포함한다.
 product_list = '''
 # Fashion Shop Product List
 
@@ -47,6 +47,9 @@ product_list = '''
 # ... (Other product categories and details)
 '''
 
+# 챗봇이 대화를 진행할 때 참고할 시스템 메시지(컨텍스트)를 설정한다.
+# 이 메시지는 챗봇이 어떻게 동작할지에 대한 지시 사항을 포함하고, 사용자에게는 한국어 또는 영어로만 응답하도록 한다.
+# 챗봇이 인사를 미리 한 상태이므로, 사용자가 다시 인사를 하더라도 인사말을 하지 말고 제품 소개를 하거나 쇼핑에 도움을 주도록 요청한다.
 context = [{'role': 'system',
             'content': f"""
 You are ShopBot, an AI assistant for my online fashion shop - Trendy Fashion.
@@ -68,10 +71,13 @@ The Current Product List is limited as below:
 Make the shopping experience enjoyable and encourage customers to reach out if they have any questions or need assistance.
 """}]
 
+# Streamlit 앱의 제목을 설정
 st.title('Trendy Fashion 챗봇')
+
+# 앱에 설명을 추가
 st.caption('AI 쇼핑 어시스턴트입니다.')
 
-# 세션 상태 초기화 및 인사말 추가
+# 세션 상태 초기화 및 기본 인사말을 설정
 if 'messages' not in st.session_state:
     st.session_state['messages'] = [{'role': 'assistant', 'content': '안녕하세요. Trendy Fashion에 오신 것을 환영합니다! 무엇을 도와드릴까요?'}]
 
