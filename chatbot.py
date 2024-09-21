@@ -86,8 +86,8 @@ context = [
 
 # --- Streamlit 구성 -----------------------------------------------------------
 # 메인 화면에 타이틀과 캡션을 설정한다.
-st.title('Trendy Fashion 👚👕👖👗')    # 웹 애플리케이션의 제목을 설정한다.
-st.caption('AI 쇼핑 어시스턴트입니다.')       # 설명 문구(부제목)를 추가한다.
+st.title('🛍️ Trendy Fashion 🛍️')    # 웹 애플리케이션의 제목을 설정한다.
+st.caption('🤖 AI 쇼핑 어시스턴트입니다.')       # 설명 문구(부제목)를 추가한다.
 
 # AI 챗봇이 먼저 인사말을 한다.
 st.chat_message(name='ai').write(GREETINGS)
