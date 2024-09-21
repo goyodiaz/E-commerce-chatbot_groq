@@ -47,11 +47,8 @@ product_list = '''
 # ... (Other product categories and details)
 '''
 
-# 챗봇이 대화를 진행할 때 참고할 시스템 메시지(컨텍스트)를 설정한다.
-# 이 메시지는 챗봇이 어떻게 동작할지에 대한 지시 사항을 포함하고, 사용자에게는 한국어 또는 영어로만 응답하도록 한다.
-# 챗봇이 인사를 미리 한 상태이므로, 사용자가 다시 인사를 하더라도 인사말을 하지 말고 제품 소개를 하거나 쇼핑에 도움을 주도록 요청한다.
-context = [{'role': 'system',
-            'content': f"""
+# --- 챗봇의 System Message 설정 --------------------------------------------------
+SYSTEM_MESSAGE = f'''
 You are ShopBot, an AI assistant for my online fashion shop - Trendy Fashion.
 
 Your role is to assist customers in browsing products, providing information, and guiding them through the checkout process.
@@ -69,17 +66,37 @@ The Current Product List is limited as below:
 ```{product_list}```
 
 Make the shopping experience enjoyable and encourage customers to reach out if they have any questions or need assistance.
-"""}]
+'''
 
-# Streamlit 앱의 제목을 설정
-st.title('Trendy Fashion 챗봇')
+GREETINGS = ''' 안녕하세요, 고객님! ✨
 
-# 앱에 설명을 추가
-st.caption('AI 쇼핑 어시스턴트입니다.')
+Trendy Fashion에 오신 것을 환영합니다. 
 
-# 세션 상태 초기화 및 기본 인사말을 설정
-if 'messages' not in st.session_state:
-    st.session_state['messages'] = [{'role': 'assistant', 'content': '안녕하세요. Trendy Fashion에 오신 것을 환영합니다! 무엇을 도와드릴까요?'}]
+저는 이 상점의 AI 어시스턴트인 Shoptbot입니다. 
+
+어떤 상품을 찾고 계신가요? 
+
+궁금한 점이 있거나 도움이 필요하면 언제든지 저에게 물어보세요. 
+
+'''
+
+# 시스템 메시지와 인사말을 설정한다.
+context = [
+    {'role': 'system', 'content': SYSTEM_MESSAGE},
+    {'role': 'assistant', 'content': GREETINGS}
+]
+
+# --- Streamlit 구성 -----------------------------------------------------------
+# 메인 화면에 타이틀과 캡션을 설정한다.
+st.title('Trendy Fashion')    # 웹 애플리케이션의 제목을 설정한다.
+st.caption('AI 쇼핑 어시스턴트입니다.')       # 설명 문구(부제목)를 추가한다.
+
+# AI 챗봇이 먼저 인사말을 한다.
+st.chat_message(name='ai').write(GREETINGS)
+
+# 세션 상태에 'messages' 키가 없으면 빈 리스트로 초기화한다.
+if 'messages' not in st.session_state:  
+    st.session_state['messages'] = []
 
 # 대화 기록을 화면에 출력
 for msg in st.session_state.messages:
