@@ -16,7 +16,7 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY'] # 또는 st.secrets['GROQ_API_KEY'] �
 client = Groq(api_key=GROQ_API_KEY)
 
 # Comet LLM 초기화 및 프로젝트 이름을 설정
-comet_llm.init(project='E-commerce_Chatbot1', api_key=COMET_API_KEY)
+comet_llm.init(project='E-commerce_Chatbot', api_key=COMET_API_KEY)
 
 # 제품 목록을 정의한다. 이 목록은 챗봇의 컨텍스트로 사용하며, 사용자가 대화 중에 요청할 수 있는 제품 정보를 포함한다.
 product_list = '''
