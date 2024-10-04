@@ -16,7 +16,7 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY']  # 또는 st.secrets['GROQ_API_KEY'] �
 
 # Opik Client 설정
 opik.configure(
-    api_key='COMET_API_KEY',
+    api_key=COMET_API_KEY,
     workspace='opik9' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
                               # 이 매개변수를 설정하지 않고 실행하면 "Do you want to use '사용자명' workspace? (Y/n)"이 나오며, y를 입력해서 진행해도 된다.
 )
