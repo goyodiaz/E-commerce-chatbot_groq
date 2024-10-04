@@ -4,15 +4,6 @@ import opik
 import opik.opik_context
 #import os
 
-opik.configure(
-    api_key=st.secrets['COMET_API_KEY'],
-    workspace='opik9' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
-                              # 이 매개변수를 설정하지 않고 실행하면 "Do you want to use '사용자명' workspace? (Y/n)"이 나오며, y를 입력해서 진행해도 된다.
-)
-
-# Opik Client 설정
-opik_client = opik.Opik()
-
 # Comet API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
 COMET_API_KEY = st.secrets['COMET_API_KEY']  # 또는 st.secrets['COMET_API_KEY'] 대신 직접 입력
 ## st.secrets 관련 내용은 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management 참조
@@ -22,6 +13,15 @@ COMET_API_KEY = st.secrets['COMET_API_KEY']  # 또는 st.secrets['COMET_API_KEY'
 GROQ_API_KEY = st.secrets['GROQ_API_KEY']  # 또는 st.secrets['GROQ_API_KEY'] 대신 직접 입력
 ## st.secrets 관련 내용은 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management 참조
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
+
+# Opik Client 설정
+opik.configure(
+    api_key='COMET_API_KEY',
+    workspace='opik9' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
+                              # 이 매개변수를 설정하지 않고 실행하면 "Do you want to use '사용자명' workspace? (Y/n)"이 나오며, y를 입력해서 진행해도 된다.
+)
+
+opik_client = opik.Opik()
 
 # Groq Client 설정
 client = Groq(api_key=GROQ_API_KEY)
