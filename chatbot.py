@@ -2,6 +2,7 @@ import streamlit as st
 from groq import Groq
 import opik
 import opik.opik_context
+import os
 
 # Opik API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
 OPIK_API_KEY = st.secrets['OPIK_API_KEY']  # 또는 st.secrets['OPIK_API_KEY'] 대신 직접 입력
@@ -14,9 +15,10 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY']  # 또는 st.secrets['GROQ_API_KEY'] �
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
 
 # Opik Client 설정
+os.environ['OPIK_PROJECT_NAME'] = 'E-commerce-chatbot' # OPIK_PROJECT_NAME 환경변수를 설정하여 프로젝트의 이름을 지정한다.
 opik.configure(
     api_key=OPIK_API_KEY,
-    workspace='opik9' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
+    workspace='dounykim' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
 )
 
 opik_client = opik.Opik()
