@@ -3,8 +3,8 @@ from groq import Groq
 import opik
 import opik.opik_context
 
-# Comet API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
-COMET_API_KEY = st.secrets['COMET_API_KEY']  # 또는 st.secrets['COMET_API_KEY'] 대신 직접 입력
+# Opik API 키를 설정한다. st.secrets를 통해 안전하게 API 키를 불러온다.
+OPIK_API_KEY = st.secrets['OPIK_API_KEY']  # 또는 st.secrets['OPIK_API_KEY'] 대신 직접 입력
 ## st.secrets 관련 내용은 https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management 참조
 ## streamlit 및 streamlit community cloud 정리 파일의 마지막 두 페이지 참조
 
@@ -15,7 +15,7 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY']  # 또는 st.secrets['GROQ_API_KEY'] �
 
 # Opik Client 설정
 opik.configure(
-    api_key=COMET_API_KEY,
+    api_key=OPIK_API_KEY,
     workspace='opik9' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
 )
 
