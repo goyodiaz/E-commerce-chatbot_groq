@@ -16,7 +16,7 @@ opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot1')
 
 # Comet Opik 프로젝트에 연결
 # Comet Opik 프로젝트와 연결하면 모델의 학습 과정이나 결과를 기록하고 관리할 수 있게 해준다.
-os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'  
+os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'
 
 # --- 마법 아이템 목록 ------------------------------------------------------------
 # 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
@@ -134,5 +134,5 @@ if prompt := st.chat_input():
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
     # --- Comet Opik에 기록 ----------------------------------------------------
-    utils.opik_trace(prompt, msg)
+    utils.opik_trace(prompt, msg, context) # utils.opik_trace(prompt, msg) 로는 성공
     # ------------------------------------------------------------------------
