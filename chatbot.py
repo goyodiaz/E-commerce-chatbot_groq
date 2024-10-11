@@ -6,7 +6,7 @@ from groq import Groq
 # Groq API 키 설정
 GROQ_API_KEY = st.secrets['GROQ_API_KEY'] 
 # Comet API 키 설정
-OPIK_API_KEY = st.secrets['OPIK_API_KEY'] 
+#OPIK_API_KEY = st.secrets['OPIK_API_KEY'] 
 
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
