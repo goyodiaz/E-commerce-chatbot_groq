@@ -13,7 +13,7 @@ client = Groq(api_key=GROQ_API_KEY)
 
 
 # Comet Opik을 설정
-opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot1', project_name='Wizard Chatbot Demo1')
+#opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot1', project_name='Wizard Chatbot Demo1')
 #os.environ['OPIK_WORKSPACE']='wizard-bot1'
 #os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo1'
 
