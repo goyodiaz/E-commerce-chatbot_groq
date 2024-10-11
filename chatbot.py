@@ -11,6 +11,7 @@ OPIK_API_KEY = st.secrets['OPIK_API_KEY']
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
 
+opik_client = opik.Opik(project_name="Wizard Chatbot Demo1", workspace="wizard-bot1")
 
 # Comet Opik을 설정
 opik.configure(api_key=OPIK_API_KEY)
