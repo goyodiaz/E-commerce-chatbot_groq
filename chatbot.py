@@ -22,7 +22,7 @@ opik.configure(
 )
 os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'  
 
-#opik_client = opik.Opik()
+opik_client = opik.Opik()
 
 # Groq Client 설정
 client = Groq(api_key=GROQ_API_KEY)
