@@ -18,7 +18,7 @@ GROQ_API_KEY = st.secrets['GROQ_API_KEY']  # 또는 st.secrets['GROQ_API_KEY'] �
 # Opik Client 설정
 opik.configure(
     api_key=OPIK_API_KEY,
-    workspace='wizard-bot' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
+    workspace='wizard-bot1' # 본인의 workspace 이름을 입력한다. workspace 이름은 사용자명과 동일하다.
 )
 os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'  
 
