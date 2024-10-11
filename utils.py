@@ -12,6 +12,6 @@ def opik_trace(input_data, output, context):
     trace.span(
         name='llm_call',
         type='llm',
-        input={'context': context},
+        input={'context': SYSTEM_MESSAGE},
         output={'response': output}
     )
