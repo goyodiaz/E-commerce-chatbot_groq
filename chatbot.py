@@ -72,25 +72,24 @@ Arcane Emporium에 오신 것을 환영합니다.
 Arcane Emporium에서 마법의 세계로 떠나보세요! 💫 
 '''
 
-context = [
-    {'role': 'system', 'content': SYSTEM_MESSAGE},
-    {'role': 'assistant', 'content': GREETINGS}
-]
+# context = [
+#     {'role': 'system', 'content': SYSTEM_MESSAGE},
+#     {'role': 'assistant', 'content': GREETINGS}
+# ]
 context = []
 
-if 'messages' not in st.session_state:  
-    st.session_state['messages'] = []
+# if 'messages' not in st.session_state:  
+#     st.session_state['messages'] = []
 
-for msg in st.session_state.messages:  
-    st.chat_message(msg['role']).write(msg['content'])  
+# for msg in st.session_state.messages:  
+#     st.chat_message(msg['role']).write(msg['content'])  
 
 if prompt := st.chat_input():  
-    st.session_state['messages'].append({'role': 'user', 'content': prompt}) 
-    st.chat_message('user').write(prompt)
+    # st.session_state['messages'].append({'role': 'user', 'content': prompt}) 
+    # st.chat_message('user').write(prompt)
 
-    # msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
     msg = "__MESSAGE__"
-    st.session_state['messages'].append({'role': 'assistant', 'content': msg})
-    st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
+    # st.session_state['messages'].append({'role': 'assistant', 'content': msg})
+    # st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
     utils.opik_trace(prompt, msg, context)
