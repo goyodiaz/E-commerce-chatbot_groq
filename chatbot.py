@@ -1,26 +1,6 @@
 import streamlit as st
 import os, utils, opik
-# from groq import Groq
 
-# --- API Key 설정 -------------------------------------------------------------
-# Groq API 키 설정
-# GROQ_API_KEY = st.secrets['GROQ_API_KEY'] 
-# Comet API 키 설정
-#OPIK_API_KEY = st.secrets['OPIK_API_KEY'] 
-
-# Groq 초기화
-# client = Groq(api_key=GROQ_API_KEY)
-
-# Comet Opik을 설정
-#opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot1')
-
-# Comet Opik 프로젝트에 연결
-# Comet Opik 프로젝트와 연결하면 모델의 학습 과정이나 결과를 기록하고 관리할 수 있게 해준다.
-#os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo1'  
-
-# --- 마법 아이템 목록 ------------------------------------------------------------
-# 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
-# 이 아이템 목록은 상점에서 판매할 마법 물품에 대한 정보를 포함하고 있다.
 product_list = '''# 마법 상점 재고 목록
 
 ## 물약:
@@ -57,7 +37,6 @@ product_list = '''# 마법 상점 재고 목록
   - 구매 가능성: 희귀(아이템을 거의 구할 수 없음)
 '''
 
-# --- 챗봇의 System Message 설정 --------------------------------------------------
 SYSTEM_MESSAGE = f'''당신은 마법사 상점, Arcane Emporium의 AI 어시스턴트인 \
 WizardBot입니다.
 
@@ -93,47 +72,24 @@ Arcane Emporium에 오신 것을 환영합니다.
 Arcane Emporium에서 마법의 세계로 떠나보세요! 💫 
 '''
 
-# 시스템 메시지와 인사말을 설정한다.
 context = [
     {'role': 'system', 'content': SYSTEM_MESSAGE},
     {'role': 'assistant', 'content': GREETINGS}
 ]
 
-# --- Streamlit 구성 -----------------------------------------------------------
-# 메인 화면에 타이틀과 캡션을 설정한다.
-st.title('마법사 상점 Arcane Emporium')    # 웹 애플리케이션의 제목을 설정한다.
-st.caption('AI 쇼핑 어시스턴트입니다.')       # 설명 문구(부제목)를 추가한다.
-
-# AI 챗봇이 먼저 인사말을 한다.
-st.chat_message(name='ai').write(GREETINGS)
-
-# 세션 상태에 'messages' 키가 없으면 빈 리스트로 초기화한다.
 if 'messages' not in st.session_state:  
     st.session_state['messages'] = []
 
-# 세션 상태에 저장한 메시지를 화면에 출력한다.
 for msg in st.session_state.messages:  
     st.chat_message(msg['role']).write(msg['content'])  
 
-# 사용자 입력을 처리하고 LLM 모델의 응답을 생성한다.
 if prompt := st.chat_input():  
-    # 사용자 입력을 대화 기록에 추가한다.  
     st.session_state['messages'].append({'role': 'user', 'content': prompt}) 
-    # 화면에 사용자 입력을 출력한다.
     st.chat_message('user').write(prompt)
-    
-    # LLM 모델을 사용하여 응답을 생성한다.
-    # response = client.chat.completions.create(
-    #     model='gemma2-9b-it',
-    #     messages=context + st.session_state['messages']  # context와 대화 기록을 결합하여 모델에 전달한다.
-    # )
 
-    # 모델의 응답을 대화 기록에 추가하고 화면에 출력한다.
     # msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
     msg = "__MESSAGE__"
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
-    # --- Comet Opik에 기록 ----------------------------------------------------
     utils.opik_trace(prompt, msg, context)
-    # ------------------------------------------------------------------------
