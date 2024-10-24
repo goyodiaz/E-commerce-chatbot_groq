@@ -9,11 +9,10 @@ if st.button("Make the call"):
         input={'user_input': "__PROMPT__"},
         output={'response': "__MSG__"}
     )
-    ```
+    st.stop()
     trace.span(
         name='llm_call',
         type='llm',
         input={'context': []},
         output={'response': "__MSG__"}
     )
-    ```
