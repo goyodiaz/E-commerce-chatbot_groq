@@ -123,13 +123,14 @@ if prompt := st.chat_input():
     st.chat_message('user').write(prompt)
     
     # LLM 모델을 사용하여 응답을 생성한다.
-    response = client.chat.completions.create(
-        model='gemma2-9b-it',
-        messages=context + st.session_state['messages']  # context와 대화 기록을 결합하여 모델에 전달한다.
-    )
+    # response = client.chat.completions.create(
+    #     model='gemma2-9b-it',
+    #     messages=context + st.session_state['messages']  # context와 대화 기록을 결합하여 모델에 전달한다.
+    # )
 
     # 모델의 응답을 대화 기록에 추가하고 화면에 출력한다.
-    msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
+    # msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
+    msg = "__MESSAGE__"
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
