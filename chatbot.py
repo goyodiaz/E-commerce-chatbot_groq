@@ -84,7 +84,8 @@ context = []
 # for msg in st.session_state.messages:  
 #     st.chat_message(msg['role']).write(msg['content'])  
 
-if prompt := st.chat_input():  
+# if prompt := st.chat_input():  
+if False:
     # st.session_state['messages'].append({'role': 'user', 'content': prompt}) 
     # st.chat_message('user').write(prompt)
 
@@ -92,4 +93,7 @@ if prompt := st.chat_input():
     # st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     # st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
-    utils.opik_trace(prompt, msg, context)
+    # utils.opik_trace(prompt, msg, context)
+
+# utils.opik_trace(prompt, msg, context)
+utils.opik_trace("__PROMPT__", "__MSG__", [])
