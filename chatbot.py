@@ -76,6 +76,7 @@ context = [
     {'role': 'system', 'content': SYSTEM_MESSAGE},
     {'role': 'assistant', 'content': GREETINGS}
 ]
+context = []
 
 if 'messages' not in st.session_state:  
     st.session_state['messages'] = []
