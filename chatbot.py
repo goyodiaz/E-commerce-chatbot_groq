@@ -1,4 +1,5 @@
 import streamlit as st
 import utils
 
-utils.opik_trace("__PROMPT__", "__MSG__", [])
+if st.button("Make the call"):
+    utils.opik_trace("__PROMPT__", "__MSG__", [])
