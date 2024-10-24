@@ -15,6 +15,15 @@ def opik_trace(input_data, output, context):
         output={'response': output}
     )
 
+client = opik.Opik(project_name='Wizard Chatbot Demo1', workspace='wizard-bot1')
+
 if st.button("Make the call"):
-    client = opik.Opik(project_name='Wizard Chatbot Demo1', workspace='wizard-bot1')
-    opik_trace("__PROMPT__", "__MSG__", [])
+    # opik_trace("__PROMPT__", "__MSG__", [])
+    input_data = "__PROMPT__"
+    output = "__MSG__"
+    context = []
+    trace = client.trace(
+        name='chat',
+        input={'user_input': input_data},
+        output={'response': output}
+    )
